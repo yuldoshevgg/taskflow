@@ -24,6 +24,12 @@ COPY app/ .
 
 RUN python manage.py collectstatic --noinput || true
 
+# Create non-root user and hand over ownership
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser \
+    && chown -R appuser:appgroup /app
+
+USER appuser
+
 EXPOSE 8000
 
 CMD ["gunicorn", "taskmanager.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2"]

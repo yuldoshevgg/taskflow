@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.*
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.log
+.pytest_cache
+app/test_db.sqlite3
+app/staticfiles
+README.md
+nginx
+docker-compose.yml
